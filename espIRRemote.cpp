@@ -1,17 +1,15 @@
 //
-// espIRRemote v1.0.2
+// espIRRemote v1.0.3
 // 2023.12.12
 //
 
 #include "espIRRemote.h"
 
-IRsend irLED(IRLEDPIN);
-
-void beginIR() {
+espIRRemote::espIRRemote(int IRLEDPIN) : irLED(IRLEDPIN) {
   irLED.begin();
 }
 
-void txIR(int remoteNumber, int irCode) {
+void espIRRemote::txIR(int remoteNumber, int irCode) {
 
   uint64_t irCodeToTX = irCodes[remoteNumber][irCode];                // Extract IR Code from array
 

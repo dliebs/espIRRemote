@@ -1,5 +1,5 @@
 //
-// espIRRemote v1.0.2
+// espIRRemote v1.0.3
 // 2023.12.12
 //
 
@@ -10,10 +10,6 @@
 
 #include "Arduino.h"
 #include <IRsend.h>
-
-#ifndef IRLEDPIN
-  #define IRLEDPIN    2    // D1 Mini Internal LED
-#endif
 
 /*---------------- IR Codes ----------------*/
 /*-- *All the remotes exist in one array* --*/
@@ -56,10 +52,14 @@ static const uint64_t irCodes[14][28] = { {0x57E3E817, 0x57E36699, 0x57E3C03F, 0
                                           {0x2C9B, 0x6C9B},
 // Sony RMT-845             - 12           0       1        2        3        4        5        6        7        8        9        10       11      12       13       14       15       16
 //   20 bit                                Rec     Display  Up       Down     Left     Right    Enter    Mode     Play     Pause    Stop     Prev    Next     Scan R   Scan F   TC Rst   Data Code
-                                          {0xCBC0, 0x2AB44, 0x9EB44, 0x5EB44, 0xDEB44, 0x3EB44, 0xD0B44, 0xD8B44, 0x4CB44, 0x9CB44, 0x1CB44, 0xCB44, 0x8CB44, 0x44B44, 0xC4B44, 0xBEBC0, 0xCCBC0}
-};
+                                          {0xCBC0, 0x2AB44, 0x9EB44, 0x5EB44, 0xDEB44, 0x3EB44, 0xD0B44, 0xD8B44, 0x4CB44, 0x9CB44, 0x1CB44, 0xCB44, 0x8CB44, 0x44B44, 0xC4B44, 0xBEBC0, 0xCCBC0} };
 
-void beginIR();
-void txIR(int, int);
+class espIRRemote {
+  public:
+    espIRRemote(int);
+    void txIR(int, int);
+  private:
+    IRsend irLED;
+};
 
 #endif
