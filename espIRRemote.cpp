@@ -1,15 +1,15 @@
 //
 //
-//  espIRRemote - Version 1.0.7
+//  espIRRemote - Version 1.0.8
 //  Based on IRsend
-//  This version was not deployed [2023.12.13]
+//  This version was deployed 2024.02.23
 //
 //  Universal IR remote class
 //    Ability to create multiple of class on different pins
 //    IR codes are built into espIRRemote.h
 //
 //  Changes From Previous Version
-//    Comments, cleanup
+//    Repeat volume for AV system
 //
 //
 
@@ -50,6 +50,12 @@ void espIRRemote::txIR(int remoteNumber, int irCode) {
     case 9:                                                           // Sony RMTDSLR2
     case 11:                                                          // Sony RMT-845
       irLED.sendSony(irCodeToTX, 15, 2);                              // 15-bit, 2x
+      if ( remoteNumber == 7 && ( irCode == 21 || irCode == 22 ) ) {
+        for ( int i = 0; i < 5; i++ ) {
+          delay(200);
+          irLED.sendSony(irCodeToTX, 15, 2);                          // Send the volume +/- 5x for AV system
+        }
+      }
       break;
 
     case 8:                                                           // Sony RMT-AA401U AV System
