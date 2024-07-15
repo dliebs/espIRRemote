@@ -1,19 +1,31 @@
 //
-// espIRRemote v1.0.4
-// 2023.12.13
+//
+//  espIRRemote - Version 1.0.7
+//  Based on IRsend
+//  This version was not deployed [2023.12.13]
+//
+//  Universal IR remote class
+//    Ability to create multiple of class on different pins
+//    IR codes are built into espIRRemote.h
+//
+//  Changes From Previous Version
+//    Comments, cleanup
+//
 //
 
 #include "espIRRemote.h"
 
+// Instanciate IRsend irLED on pin IRLEDPIN and begin irLED
 espIRRemote::espIRRemote(int IRLEDPIN) : irLED(IRLEDPIN) {
   irLED.begin();
 }
 
+// Send IR code of coordinates of irCodes[][]
 void espIRRemote::txIR(int remoteNumber, int irCode) {
 
   uint64_t irCodeToTX = irCodes[remoteNumber][irCode];                // Extract IR Code from array
 
-  switch ( remoteNumber ) {
+  switch ( remoteNumber ) {                                           // Send appropriate IR modulation according to remoteNumber
     case 0:                                                           // TCL Series 4 Roku Remote
     case 4:                                                           // Incense Heater  
       irLED.sendNEC(irCodeToTX);                                      // 8-bit, 1x

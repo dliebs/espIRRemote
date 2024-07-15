@@ -1,6 +1,16 @@
 //
-// espIRRemote v1.0.4
-// 2023.12.13
+//
+//  espIRRemote - Version 1.0.7
+//  Based on IRsend
+//  This version was not deployed [2023.12.13]
+//
+//  Universal IR remote class
+//    Ability to create multiple of class on different pins
+//    IR codes are built into espIRRemote.h
+//
+//  Changes From Previous Version
+//    Comments, cleanup
+//
 //
 
 #ifndef espIRRemote_h
@@ -53,16 +63,19 @@ static const uint64_t irCodes[14][28] = { {0x57E3E817, 0x57E36699, 0x57E3C03F, 0
 // Sony RMT-845             - 12           0       1        2        3        4        5        6        7        8        9        10       11      12       13       14       15       16
 //   20 bit                                Rec     Display  Up       Down     Left     Right    Enter    Mode     Play     Pause    Stop     Prev    Next     Scan R   Scan F   TC Rst   Data Code
                                           {0xCBC0, 0x2AB44, 0x9EB44, 0x5EB44, 0xDEB44, 0x3EB44, 0xD0B44, 0xD8B44, 0x4CB44, 0x9CB44, 0x1CB44, 0xCB44, 0x8CB44, 0x44B44, 0xC4B44, 0xBEBC0, 0xCCBC0},
-// Golden Power LED Lights  - 13           0           1           2           3           4           5           6           7           8           9          10          11          12          13          14          15
-//   32 Bit                                On          Off         Dim -       Dim +       M1          M2          M3          M4          M5          M6          M7          M8          6H          8H          6639H       Timer Off
+// Golden Power LED Lights  - 13           0           1           2           3           4           5           6           7           8           9           10          11          12          13          14          15
+//   32 Bit, used by macro() funcs         On          Off         Dim -       Dim +       M1          M2          M3          M4          M5          M6          M7          M8          6H          8H          6639H       Timer Off
                                           {0x40BF00FF, 0x40BF40BF, 0x40BF28D7, 0x40BF6897, 0x40BF20DF, 0x40BFA05F, 0x40BF10EF, 0x40BF906F, 0x40BF30CF, 0x40BFB04F, 0x40BF08F7, 0x40BF8877, 0x40BF609F, 0x40BF50AF, 0x40BF708F, 0x40BF807F}
 };
 
 class espIRRemote {
   public:
+    // Create IR Remote on input pin
     espIRRemote(int);
+    // Send IR code of coordinates of irCodes[][]
     void txIR(int, int);
   private:
+    // Instanciated upon creation of espIRRemote object
     IRsend irLED;
 };
 
