@@ -21,6 +21,7 @@ void espIRRemote::txIR(int remoteNumber, int irCode) {
 
     case 3:                                                           // 3x2 HDMI Matrix Switch
     case 6:                                                           // 4x2 HDMI Matrix Switch
+    case 13:                                                          // Golden Power LED Lights
       irLED.sendNEC(irCodeToTX, 32, 1);                               // 32-bit. 1x
       break;
 
