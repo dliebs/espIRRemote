@@ -1,5 +1,5 @@
 //
-// espIRRemote v1.0.1
+// espIRRemote v1.0.2
 // 2023.12.12
 //
 
@@ -59,10 +59,7 @@ static const uint64_t irCodes[14][28] = { {0x57E3E817, 0x57E36699, 0x57E3C03F, 0
                                           {0xCBC0, 0x2AB44, 0x9EB44, 0x5EB44, 0xDEB44, 0x3EB44, 0xD0B44, 0xD8B44, 0x4CB44, 0x9CB44, 0x1CB44, 0xCB44, 0x8CB44, 0x44B44, 0xC4B44, 0xBEBC0, 0xCCBC0}
 };
 
-class espIRRemote {
-  public:
-    espIRRemote();
-    void txIR(int, int);
-};
+void beginIR();
+void txIR(int, int);
 
 #endif

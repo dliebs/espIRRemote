@@ -1,7 +1,9 @@
 //
-// espIRRemote v1.0.1
+// espIRRemote v1.0.2
 // 2023.12.12
 //
+
+#define IRLEDPIN 13
 
 /*----------  Libraries  ----------*/
 
@@ -9,17 +11,16 @@
 
 /*----------  User Variables  ----------*/
 
-#define IRLEDPIN 13
 
 /*----------  Program Variables  ----------*/
 
-espIRRemote irRemote;
+//espIRRemote irRemote;
 
 /*----------  Main Functions  ----------*/
 
-void setup() { }
+void setup() { beginIR(); }
 
 void loop() {
-  irRemote.txIR(0,0);
+  txIR(0,0);
   delay(5000);
 }
