@@ -1,6 +1,6 @@
 //
-// espIRRemote v1.0.3
-// 2023.12.12
+// espIRRemote v1.0.4
+// 2023.12.13
 //
 
 #include "espIRRemote.h"
