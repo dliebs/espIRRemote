@@ -2,10 +2,6 @@
 //
 //  ESP8266 Sony IR Shutter Button
 //
-//  Modified from espir.6.c
-//
-//  This version has not been deployed
-//
 //
 
 #include <IRsend.h>

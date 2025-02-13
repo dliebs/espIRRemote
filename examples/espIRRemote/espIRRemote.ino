@@ -1,15 +1,10 @@
 //
 //
-//  espIRRemote - Version 1.0.8
-//  Based on IRsend
-//  This version was deployed 2024.02.23
-//
-//  Universal IR remote class
-//    Ability to create multiple of class on different pins
-//    IR codes are built into espIRRemote.h
+//  espIRRemote - Arduino IR remote class with code LUT
+//    IR code lookup table is in espIRRemote.h
 //
 //  Changes From Previous Version
-//    Repeat volume for AV system
+//    Added more codes for TCL
 //
 //
 

@@ -1,15 +1,10 @@
 //
 //
-//  espIRRemote - Version 1.0.8
-//  Based on IRsend
-//  This version was deployed 2024.02.23
-//
-//  Universal IR remote class
-//    Ability to create multiple of class on different pins
-//    IR codes are built into espIRRemote.h
+//  espIRRemote - Arduino IR remote class with code LUT
+//    IR code lookup table is in espIRRemote.h
 //
 //  Changes From Previous Version
-//    Repeat volume for AV system
+//    Added more codes for TCL
 //
 //
 
@@ -24,9 +19,9 @@
 /*---------------- IR Codes ----------------*/
 /*-- *All the remotes exist in one array* --*/
 
-// TCL Series 4 Roku Remote - 0            0           1           2           3           4           5           6           7           8           9           10          11          12          13          14          15
-//                                         Power       Back        Home        Up          Left        Down        Right       Ok          Jump Back?  */Option    Rewind      Play/Pause  Fast Fwd    Vol Up      Vol Down    Mute
-static const uint64_t irCodes[14][28] = { {0x57E3E817, 0x57E36699, 0x57E3C03F, 0x57E39867, 0x57E37887, 0x57E3CC33, 0x57E3B44B, 0x57E354AB, 0x57E31EE1, 0x57E38679, 0x57E32CD3, 0x57E332CD, 0x57E3AA55, 0x57E3F00F, 0x57E308F7, 0x57E304FB},
+// TCL Series 4 Roku Remote - 0            0           1           2           3           4           5           6           7           8           9           10          11          12          13          14          15          16          17          18          19          20          21          22
+//                                         Power       Back        Home        Up          Left        Down        Right       Ok          Jump Back?  */Option    Rewind      Play/Pause  Fast Fwd    Vol Up      Vol Down    Mute        Off         On          HDMI1       HDMI2       HDMI3       AV          Antenna
+static const uint64_t irCodes[14][28] = { {0x57E3E817, 0x57E36699, 0x57E3C03F, 0x57E39867, 0x57E37887, 0x57E3CC33, 0x57E3B44B, 0x57E354AB, 0x57E31EE1, 0x57E38679, 0x57E32CD3, 0x57E332CD, 0x57E3AA55, 0x57E3F00F, 0x57E308F7, 0x57E304FB, 0x57E318E7, 0x57E316E9, 0x57E3847B, 0x57E344BB, 0x57E3C43B, 0x57E3A45B, 0x57E3D42B},
 // Sony RM-YD023 & RM-YD092 - 1            0      1      2      3      4      5     6      7      8      9      10     11     12     13     14    15     16     17     18     19    20     21     22     23     24     25     26     27
 //   12 bit                                Power  Input  PicOff Disp   Sleep  Home  Pict   Up     Left   Down   Right  Ok     Vol +  Vol -  Ch +  Ch -   Jump   Mute   0      1     2      3      4      5      6      7      8      9
                                           {0xA90, 0xA50, 0x7D0, 0x5D0, 0x6D0, 0x70, 0x270, 0x2F0, 0x2D0, 0xAF0, 0xCD0, 0xA70, 0x490, 0xC90, 0x90, 0x890, 0xDD0, 0x290, 0x910, 0x10, 0x810, 0x410, 0xC10, 0x210, 0xA10, 0x610, 0xE10, 0x110},
